@@ -35,7 +35,6 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org
           cache: npm
 
       - name: Verify tag matches package version
@@ -71,4 +70,6 @@ jobs:
         run: npm install --global npm@11.5.1
 
       - name: Publish with npm provenance
+        env:
+          NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
         run: npm publish --access public --provenance
